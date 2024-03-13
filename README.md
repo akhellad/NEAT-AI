@@ -30,11 +30,10 @@ To run this project locally, follow these steps:
 
 To get the project up and running on your local machine, follow these steps:
 
-1. **Clone the project repository**:
+**Clone the project repository**:
    ```sh
-   git clone <repository-url>
+   git clone git@github.com:akhellad/NEAT-AI.git
    ```
-Replace `<repository-url>` with the actual URL of your project repository.
 
 **Navigate into the project directory:**
 
