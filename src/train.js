@@ -1,5 +1,5 @@
 import * as constants from './Constants.js';
-import { Population } from './NeatJS/population.js';
+import { Population } from '../NeatJS/population.js';
 
 export class Game {
     constructor() {

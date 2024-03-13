@@ -1,5 +1,5 @@
-import * as constants from './Constants.js';
-import { train } from './train.js';
+import * as constants from '../src/Constants.js';
+import { train } from '../src/train.js';
 
 const canvas = document.getElementById('pongCanvas');
 const ctx = canvas.getContext('2d');
@@ -10,6 +10,8 @@ let ballPosition = { x: constants.WIN_WIDTH / 2, y: constants.WIN_HEIGHT / 2 };
 let ballVelocity = { x: constants.BALL_SPEED, y: 0};
 let movingUpP1 = false;
 let movingDownP1 = false;
+let scorePlayer1 = 0;
+let scorePlayer2 = 0;
 
 
 var aiPong;
@@ -77,6 +79,13 @@ function drawMiddleLine() {
     }
 }
 
+function drawScore() {
+    ctx.fillStyle = 'red';
+    ctx.font = '30px Arial';
+    ctx.fillText(scorePlayer1, constants.WIN_WIDTH / 2 - 50, 50);
+    ctx.fillText(scorePlayer2, constants.WIN_WIDTH / 2 + 25, 50);
+}
+
 function draw() {
     ctx.clearRect(0, 0, constants.WIN_WIDTH, constants.WIN_HEIGHT);
 
@@ -86,12 +95,18 @@ function draw() {
     drawPaddle(player1Position.x, player1Position.y); 
     drawPaddle(player2Position.x, player2Position.y);
     drawBall();
+    drawScore();
 
     ballPosition.x += ballVelocity.x;
     ballPosition.y += ballVelocity.y;
 
     handle_ball_collision();
     if (ballPosition.x < 0 || ballPosition.x > constants.WIN_WIDTH){
+        if (ballPosition.x < 0) {
+            scorePlayer2 += 1;
+        } else {
+            scorePlayer1++;
+        }
         ballPosition.x = constants.WIN_WIDTH / 2;
         ballPosition.y = constants.WIN_HEIGHT / 2;
         ballVelocity.x = -ballVelocity.x;

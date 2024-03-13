@@ -1,5 +1,5 @@
 import {Genome} from './genome.js';
-import { Game } from '../train.js';
+import { Game } from '../src/train.js';
 
 let genomeInputsN = 3;
 let genomeOutputN = 2;
